@@ -2,23 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Flash Game</title>
+  <title>Ruffle Flash Game</title>
   <script src="ruffle.js"></script>
-  <style>
-    body { margin: 0; background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; }
-  </style>
-</head>
-<body>
-  <div id="container"></div>
-
   <script>
     window.RufflePlayer = window.RufflePlayer || {};
-    window.addEventListener("load", () => {
-      const ruffle = window.RufflePlayer.newest();
-      const player = ruffle.createPlayer();
-      document.getElementById("container").appendChild(player);
-      player.load("happyWheels.swf");  <!-- Replace yourgame.swf with your actual SWF filename -->
-    });
+    window.RufflePlayer.config = {
+      wasmModuleUrl: "0cf263451490b84ae7d2.wasm",
+      wasmFallbackUrl: "6da5c9135203e9dbaaf2.wasm"
+    };
+  </script>
+</head>
+<body>
+  <h1>Happy Wheels with Ruffle</h1>
+  <ruffle-player style="width: 800px; height: 600px;"></ruffle-player>
+
+  <script>
+    const ruffle = window.RufflePlayer.newest();
+    const player = ruffle.createPlayer();
+    document.querySelector("ruffle-player").appendChild(player);
+    player.load("happyWheels.swf");
   </script>
 </body>
 </html>
