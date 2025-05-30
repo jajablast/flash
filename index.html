@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Doom with Ruffle</title>
+<style>
+  body { margin: 0; background: black; display: flex; justify-content: center; align-items: center; height: 100vh; }
+  #container { width: 800px; max-width: 100%; }
+</style>
+</head>
+<body>
+<div id="container">
+  <div id="player"></div>
+</div>
+
+<script src="ruffle.js"></script>
+<script>
+  window.RufflePlayer = window.RufflePlayer || {};
+  window.RufflePlayer.config = {
+    wasmModule: "0cf263451490b84ae7d2.wasm"  // your wasm filename here (pick the one required)
+  };
+  const ruffle = window.RufflePlayer.newest();
+  const player = ruffle.createPlayer();
+  document.getElementById("player").appendChild(player);
+  player.load("doom.swf");
+</script>
+</body>
+</html>
